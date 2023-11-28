@@ -2,9 +2,9 @@
   "name": "comision-m04-pedro-upits",
   "version": "1.0.0",
   "description": "",
-  "main": "servidorExpress.js",
+  "main": "servidor.js",
   "scripts": {
-    "dev": "nodemon servidorExpress"
+    "dev": "nodemon src/servidor.js"
   },
   "author": "",
   "license": "ISC",
