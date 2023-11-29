@@ -1,14 +1,24 @@
 require('dotenv').config();
 
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
 
+
+const usuarioRouter = require('./routes/usuarioRoutes.js');
+const autenticacionRouter = require('./routes/autenticacionRoutes.js');
+const archivoRouter = require('./routes/archivoRouter.js');
+
+const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hola mundo!');
-});
+// Middleware
+app.use(bodyParser.json());
+app.use(fileUpload());
 
+app.use(usuarioRouter);
+app.use(autenticacionRouter);
+app.use(archivoRouter);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`)
