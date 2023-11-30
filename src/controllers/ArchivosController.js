@@ -20,6 +20,4 @@ ArchivosController.subirArchivo = (req, res) => {
 }
 }
 
-
-
 module.exports = ArchivosController;
