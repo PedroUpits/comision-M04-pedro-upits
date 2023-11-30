@@ -1,16 +1,32 @@
 require('dotenv').config();
 
 const express = require('express');
-const app = express();
+const bodyParser = require('body-parser');
+const fileUpload = require('express-fileupload');
+const cors = require('cors');
 
+const {database} = require('./config/SequelizeConfig.js');
+
+const usuarioRouter = require('./routes/usuarioRoutes.js');
+const autenticacionRouter = require('./routes/autenticacionRoutes.js');
+const archivoRouter = require('./routes/archivoRouter.js');
+const georefRouter = require('./routes/georef.Router.js');
+
+const app = express();
 const PORT = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hola mundo!');
-});
+// Middleware
+app.use(bodyParser.json());
+app.use(fileUpload());
 
+// Rutas
+app.use(usuarioRouter);
+app.use(autenticacionRouter);
+app.use(archivoRouter);
+app.use(georefRouter);
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en el puerto ${PORT}`)
+  //database();
 });
 
