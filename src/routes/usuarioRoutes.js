@@ -1,4 +1,5 @@
 const usuarioRouter = require('express').Router();
+
 const {
     verUsuarios,
     verUsuario,
